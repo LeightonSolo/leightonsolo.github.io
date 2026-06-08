@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leighton Solomon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0b0d;
+      --surface: #111114;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.14);
+      --text-primary: #f0ede8;
+      --text-secondary: #7a7a82;
+      --text-muted: #3e3e46;
+      --accent: #d4a96a;
+      --accent-dim: rgba(212,169,106,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      min-height: 100vh;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 6rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── LINK CARDS ── */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 5rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card:first-child { border-radius: 8px 8px 0 0; }
+    .link-card:last-child  { border-radius: 0 0 8px 8px; }
+    .link-card:only-child  { border-radius: 8px; }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .link-card:hover {
+      background: #17171b;
+      border-color: var(--border-hover);
+    }
+
+    .link-card:hover::before { opacity: 1; }
+
+    .link-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .link-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .link-meta {
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .link-arrow {
+      font-size: 16px;
+      color: var(--text-muted);
+      transition: color 0.15s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .link-card:hover .link-arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0 3rem;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header         { animation: fadeUp 0.55s ease both; }
+    .section-label { animation: fadeUp 0.55s 0.1s ease both; }
+    .link-card:nth-child(1) { animation: fadeUp 0.45s 0.15s ease both; }
+    .link-card:nth-child(2) { animation: fadeUp 0.45s 0.22s ease both; }
+    .link-card:nth-child(3) { animation: fadeUp 0.45s 0.29s ease both; }
+    .link-card:nth-child(4) { animation: fadeUp 0.45s 0.36s ease both; }
+    .link-card:nth-child(5) { animation: fadeUp 0.45s 0.43s ease both; }
+    footer          { animation: fadeUp 0.45s 0.5s ease both; }
+
+    @media (max-width: 480px) {
+      header { padding: 3.5rem 0 2.5rem; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <p class="eyebrow">Field Operations Software Developer</p>
+      <h1>Leighton<br>Solomon</h1>
+      <p class="tagline">A collection of my projects, work, and things I've built for fun.</p>
+    </header>
+
+    <p class="section-label">Projects &amp; Links</p>
+
+    <div class="links">
+
+      <!-- ── ADD / EDIT LINKS BELOW ── -->
+
+      <a class="link-card" href="https://youtu.be/j7cvrFm26cc" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-title">Smart Apartment Tour</span>
+          <span class="link-meta">Home automation · walkthrough video</span>
+        </div>
+        <span class="link-arrow">↗</span>
+      </a>
+
+      <a class="link-card" href="https://hyperfollow.com/L13S" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-title">Music</span>
+          <span class="link-meta">Releases · streaming links</span>
+        </div>
+        <span class="link-arrow">↗</span>
+      </a>
+
+      <a class="link-card" href="https://docs.google.com/document/d/13QFjRUViQlBzcZvT8u5s8Kk4Vfi82wTa0biAu3ea-xI" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-title">Work Projects</span>
+          <span class="link-meta">Software, Scripts, and Field Ops Tooling</span>
+        </div>
+        <span class="link-arrow">↗</span>
+      </a>
+
+      <a class="link-card" href="https://docs.google.com/document/d/1wFCDbdWdCz5uwSzrk7mErhBxf-uclZ1RzIZfU7ipwCE/" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-title">Résumé</span>
+          <span class="link-meta">Experience · skills · education</span>
+        </div>
+        <span class="link-arrow">↗</span>
+      </a>
+
+    </div>
+
+    <footer>leighton.live</footer>
+
+  </div>
+</body>
+</html>
