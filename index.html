@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <div id="easter-egg" style="position: fixed; inset: 0; background: rgba(11, 11, 13, 0.95); display: none; align-items: center; justify-content: center; z-index: 999; cursor: pointer;">
+    <img src="easter-egg.gif" alt="Easter egg" style="max-width: 90%; max-height: 90%; border-radius: 8px;">
+  </div>
+
+  <script>
+  const easterEgg = document.getElementById('easter-egg');
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'e') {
+      easterEgg.style.display = easterEgg.style.display === 'none' ? 'flex' : 'none';
+    }
+  });
+  
+  easterEgg.addEventListener('click', () => {
+    easterEgg.style.display = 'none';
+  });
+</script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leighton Solomon</title>
