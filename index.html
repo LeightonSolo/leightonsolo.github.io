@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <div id="easter-egg" style="position: fixed; inset: 0; background: rgba(11, 11, 13, 0.95); display: none; align-items: center; justify-content: center; z-index: 999; cursor: pointer;">
-    <img src="easter-egg.gif" alt="Easter egg" style="max-width: 90%; max-height: 90%; border-radius: 8px;">
-  </div>
+<!-- Easter egg -->
+<div id="easter-egg" style="position: fixed; inset: 0; background: rgba(11, 11, 13, 0.95); display: none; align-items: center; justify-content: center; z-index: 999; cursor: pointer;">
+  <img src="easter-egg.gif" alt="Easter egg" style="max-width: 90%; max-height: 90%; border-radius: 8px;">
+</div>
 
   <script>
   const easterEgg = document.getElementById('easter-egg');
@@ -19,7 +19,7 @@
     easterEgg.style.display = 'none';
   });
 </script>
-  
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leighton Solomon</title>
@@ -69,17 +69,16 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
     /* ── HEADER ── */
     header {
-      padding: 6rem 0 4rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 4rem;
-    }
+    padding: 6rem 0 4rem;
+    margin-bottom: 0rem;
+  }
 
     .eyebrow {
       font-family: 'DM Mono', monospace;
@@ -235,16 +234,20 @@
   <div class="container">
 
     <header>
-      <p class="eyebrow">Field Operations Software Developer</p>
+  <p class="eyebrow">Field Operations Software Developer</p>
+  
+  <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+    <div style="flex: 1;">
       <h1>Leighton<br>Solomon</h1>
-      <p class="tagline">A collection of my projects, work, and things I've built for fun.</p>
-    </header>
+      <p class="tagline">Technology, Cosmology, Music</p>
+    </div>
+    <img src="headshot.jpg" alt="Leighton Solomon" style="width: 220px; height: 220px; border-radius: 50%; border: 1px solid var(--border); object-fit: cover; flex-shrink: 0;">
+  </div>
+</header>
 
     <p class="section-label">Projects &amp; Links</p>
 
     <div class="links">
-
-      <!-- ── ADD / EDIT LINKS BELOW ── -->
 
       <a class="link-card" href="https://youtu.be/j7cvrFm26cc" target="_blank" rel="noopener">
         <div class="link-left">
